@@ -1,18 +1,42 @@
 import { Cast } from '../utils/interfaces';
+import { likeIcon, recastIcon, commentIcon} from '../assets/icons';
 
 export const CastCard: React.FC<{cast: Cast}> = ({cast}) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl card-bordered card-compact">
-      <div className="flex flex-row p-5 pb-0">
-        <img src={cast.meta.avatar} alt='User avatar' className="w-7 rounded-full mr-1" />
-        <p className="card-title">{cast.body.username}</p>
+    <a href={cast.merkleRoot} className="card m-2 w-80 bg-neutral-focus card-compact border-2 border-base-300 shadow-base-300 hover:shadow-md hover:-translate-x-1 hover:-translate-y-1">
+
+      <div className="flex flex-row p-2 pb-0 justify-between">
+
+        <div className="flex flex-row">
+          <img src={cast.meta.avatar} alt='User avatar' className="w-8 rounded-full mr-1" />
+          <p className="card-title">{cast.body.username}</p>
+        </div>
+
+        <div className="flex flex-row items-center justify-evenly text-secondary">
+          {likeIcon}
+          {cast.meta.reactions.count}
+        </div>
+
+        <div className="flex flex-row items-center justify-evenly text-secondary">
+          {recastIcon}
+          {cast.meta.recasts.count}
+        </div>
+
+        <div className="flex flex-row items-center justify-evenly text-secondary">
+          {commentIcon}
+          {cast.meta.numReplyChildren}
+        </div>
+
       </div>
+
       <div className="card-body">
         <p>{cast.body.data.text}</p>
       </div>
-      <figure className="overflow-auto max-h-60">
+
+      <figure className="overflow-auto max-h-52">
         <img src={cast.body.data.image!} alt="Essay image" className="overflow-auto" />
       </figure>
-    </div>
+
+    </a>
   );
 }
