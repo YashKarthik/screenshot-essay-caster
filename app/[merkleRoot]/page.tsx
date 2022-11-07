@@ -1,8 +1,17 @@
 import { getEssayThread } from '../../utils/FetchMethods';
 import { likeIcon, recastIcon, commentIcon} from '../../assets/icons';
 
-export default async function CastView({params}: { params: { merkleRoot: string }, searchParams: {} }) {
-  const merkleRoot = params.merkleRoot;
+type Props = {
+  params: {
+    merkleRoot: string;
+  };
+  searchParams?: {
+    search?: string;
+  };
+};
+
+const CastView = async (props: Props) => {
+  const merkleRoot = props.params.merkleRoot;
   const data = await getEssayThread(merkleRoot);
   const cast = data.casts[data.casts.length - 1]
 
@@ -45,3 +54,5 @@ export default async function CastView({params}: { params: { merkleRoot: string 
     </div>
   );
 }
+
+export default CastView;
