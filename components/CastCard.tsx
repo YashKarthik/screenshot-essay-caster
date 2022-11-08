@@ -33,9 +33,9 @@ export const CastCard: React.FC<{cast: Cast}> = ({cast}) => {
         <p>{cast.body.data.text}</p>
       </div>
 
-      <figure className="overflow-auto max-h-52">
-        <img src={cast.body.data.image!} alt="Essay image" className="overflow-auto" />
-      </figure>
+      <div className="overflow-auto max-h-52 border-b-2 rounded-b-2xl border-base-300">
+        <img src={cast.body.data.image!} alt="Essay image" />
+      </div>
 
     </a>
   );

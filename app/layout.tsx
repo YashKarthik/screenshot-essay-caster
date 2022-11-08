@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang="en" data-theme="dracula">
 
       <head />
-      <body>
+      <body className="flex flex-col justify-between min-h-[100vh]">
         <nav>
           <div className="navbar bg-base-100">
             <div className="m-2 flex-1 flex-col items-start">
@@ -39,7 +39,7 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="bottom-px footer items-center p-4 bg-base-300 text-neutral-content">
+        <footer className="mb-0 footer items-center p-4 bg-base-300 text-neutral-content">
           <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
 
             <p className="text-secondary font-mono">

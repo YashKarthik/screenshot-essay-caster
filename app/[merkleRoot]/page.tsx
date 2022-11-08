@@ -49,7 +49,9 @@ const CastView = async (props: Props) => {
 
         </div>
 
-        <img className="border-neutral border-2 rounded-md " src={data.casts[data.casts.length - 1].body.data.image!} alt="Essay screenshot" />
+        <div className="overflow-auto max-h-[550px] border-neutral border-2 rounded-lg ">
+          <img className="overflow-auto" src={data.casts[data.casts.length - 1].body.data.image!} alt="Essay screenshot" />
+        </div>
         <figcaption className="italic text-neutral-content">{data.casts[data.casts.length - 1].body.data.text}</figcaption>
       </figure>
 
@@ -60,7 +62,7 @@ const CastView = async (props: Props) => {
           {data.casts.map(c => {
             if (c.body.data.replyParentMerkleRoot != cast.merkleRoot) return;
             return (
-              <div className="flex flex-col items-stretch m-4 p-2 bg-neutral-focus rounded-md">
+              <div key={c.uri} className="flex flex-col items-stretch m-4 p-2 bg-neutral-focus rounded-md">
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row">
                     <img src={c.meta.avatar} alt='User avatar' className="w-8 rounded-full mr-1" />
