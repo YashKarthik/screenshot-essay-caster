@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import './globals.css'
 
 export default function RootLayout({
@@ -37,6 +38,30 @@ export default function RootLayout({
         </nav>
 
         {children}
+
+        <footer className="bottom-px footer items-center p-4 bg-base-300 text-neutral-content">
+          <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+
+            <p className="text-secondary font-mono">
+              yashkarthik.eth
+            </p>
+
+            <a
+              href="https://www.buymeacoffee.com/yashkarthik" 
+              target="_blank"
+              className="link border-2 rounded-md bg-white"
+            >
+              <Image 
+                src="/bmc-full-logo.png" 
+                alt="Buy me a coffee button" 
+                width="100" 
+                height="100"
+              />
+            </a>
+
+          </div>
+        </footer>
+
       </body>
     </html>
   )

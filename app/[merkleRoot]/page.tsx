@@ -18,7 +18,7 @@ const CastView = async (props: Props) => {
   return(
     <div className="flex flex-row">
 
-      <figure className="w-[800px] m-5 text-center">
+      <figure className="w-[1100px] m-5 text-center">
         <div className="flex flex-row mb-2 justify-between">
           <div className="flex flex-row">
             <img src={cast.meta.avatar!} alt="User avatar" className="w-8 h-8  rounded-full mr-1" />
@@ -40,6 +40,11 @@ const CastView = async (props: Props) => {
               {commentIcon}
               {cast.meta.numReplyChildren}
             </div>
+
+            <div className="px-2 flex flex-row items-center justify-evenly text-secondary">
+              {(new Date(cast.body.publishedAt)).toLocaleString()}
+            </div>
+
           </div>
 
         </div>
@@ -48,8 +53,48 @@ const CastView = async (props: Props) => {
         <figcaption className="italic text-neutral-content">{data.casts[data.casts.length - 1].body.data.text}</figcaption>
       </figure>
 
-      <section className="flex flex-column">
-        replies will come here
+      <section className="flex flex-col my-5">
+        <h3 className="text-2xl font-bold">Conversations:</h3>
+
+        <div className="">
+          {data.casts.map(c => {
+            if (c.body.data.replyParentMerkleRoot != cast.merkleRoot) return;
+            return (
+              <div className="flex flex-col items-stretch m-4 p-2 bg-neutral-focus rounded-md">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-row">
+                    <img src={c.meta.avatar} alt='User avatar' className="w-8 rounded-full mr-1" />
+                    <p className="card-title">{c.body.username}</p>
+                  </div>
+
+                  <div className="flex flex-row">
+                    <div className="px-2 flex flex-row items-center justify-evenly text-secondary">
+                      {likeIcon}
+                      {c.meta.reactions.count}
+                    </div>
+
+                    <div className="px-2 flex flex-row items-center justify-evenly text-secondary">
+                      {recastIcon}
+                      {c.meta.recasts.count}
+                    </div>
+
+                    <div className="px-2 flex flex-row items-center justify-evenly text-secondary">
+                      {commentIcon}
+                      {c.meta.numReplyChildren}
+                    </div>
+
+                  </div>
+                </div>
+
+                <p>{c.body.data.text}</p>
+                <div className="px-2 flex flex-row justify-evenly text-secondary self-end font-thin">
+                  {(new Date(c.body.publishedAt)).toLocaleString()}
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
