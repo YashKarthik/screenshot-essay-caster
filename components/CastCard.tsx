@@ -3,7 +3,7 @@ import { likeIcon, recastIcon, commentIcon} from '../assets/icons';
 
 export const CastCard: React.FC<{cast: Cast}> = ({cast}) => {
   return (
-    <a href={cast.merkleRoot} className="card m-2 w-80 bg-neutral-focus card-compact border-2 border-base-300 shadow-base-300 hover:shadow-md hover:-translate-x-1 hover:-translate-y-1">
+    <a href={cast.merkleRoot + `&search?img=${cast.body.data.image}`} className="card m-2 w-80 bg-neutral-focus card-compact border-2 border-base-300 shadow-base-300 hover:shadow-md hover:-translate-x-1 hover:-translate-y-1">
 
       <div className="flex flex-row p-2 pb-0 justify-between">
 

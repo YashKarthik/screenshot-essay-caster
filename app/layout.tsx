@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import './globals.css'
+import BuyMeACoffee from "../public/bmc-full-logo.png" ;
+
 
 export default function RootLayout({
   children,
@@ -52,7 +54,7 @@ export default function RootLayout({
               className="link border-2 rounded-md bg-white"
             >
               <Image 
-                src="/bmc-full-logo.png" 
+                src={BuyMeACoffee}
                 alt="Buy me a coffee button" 
                 width="100" 
                 height="100"
